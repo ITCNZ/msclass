@@ -1,0 +1,10 @@
+.findpass-btn{
+  text-align: right;
+  padding: 20rpx 0;
+}
+.findpass-btn a{
+float:right;
+text-align: right
+}
+
+

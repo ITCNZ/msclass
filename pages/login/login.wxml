@@ -1,0 +1,25 @@
+<!--logs.wxml-->
+<view class="container">
+  <block>欢迎登陆名师课堂</block>
+  <form bindsubmit="formSubmit" bindreset="formReset">
+     <view class="weui-cell weui-cell_input weui-cell_vcode">
+        <view class="weui-cell__bd">用户名</view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" bindinput="getPhone" type="number" placeholder="请输入手机号码" />
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode">
+        <view class="weui-cell__bd">密码</view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" bindinput="getPassword" password placeholder="请输入密码" />
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_input weui-cell_vcode findpass-btn">
+        <a href="javascript:;" bindtap="forgetPwdBtn">忘记密码</a>
+    </view>
+    <view class="btn-area">
+      <button type="primary" bindtap="loginClick" disabled="{{phoneDisable || passDisable}}"> 登录 </button>
+    </view>
+    
+  </form>
+</view>
