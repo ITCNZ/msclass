@@ -1,8 +1,9 @@
-var Banner = require('./banner.js');
 var Auth = require('./auth.js');
-
+var User = require('./user.js');
+var Course = require('./course.js');
 
 module.exports = {
-  Banner: Banner,
-  Auth: Auth
+  User: User,
+  Auth: Auth,
+  Course: Course
 }

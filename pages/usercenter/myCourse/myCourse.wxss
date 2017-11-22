@@ -1,0 +1,100 @@
+ .course-list{
+   margin: 0 -10rpx;
+   width: auto;
+   overflow: hidden;
+   clear: both;
+} 
+.course-one,.must_course{
+  position: relative;
+  text-align: center;
+  width: 50%;
+  float: left;
+  font-size: 24rpx;
+}
+.weui-inner{
+  margin: 0 10rpx; 
+ height: 190rpx;
+ border-radius: 16rpx;
+ overflow: hidden
+}
+
+.icon-Group{
+color: #2E7AFF;
+font-size: 40rpx;
+}
+.weui-cell-title .weui-ico{
+  background: #F34055;
+}
+
+.title-bt{
+  position: relative;
+  margin: 70rpx 0 30rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  clear: both;
+  overflow: hidden;
+  text-align: center
+}
+.title-bt image{
+  width: 390rpx;
+  height: 40rpx;
+  margin-top: 5rpx;
+}
+.tipsBtn{
+  position:absolute;
+  right: 0;
+  top: 0;
+}
+.must_course{
+  width: 100%;
+}
+.must_course .weui-inner{
+  height:376rpx;
+  position: relative;
+  margin: 0
+}
+.must_course image{
+  border-radius:20rpx;
+}
+
+.must_course .course-info{
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 44rpx;
+  line-height: 44rpx;
+  color: #fff;
+  overflow: hidden;
+  background: rgba(0,0,0,.6);
+  border-radius: 0 14rpx 0 14rpx;
+  padding:0 16rpx 0 16rpx;
+  font-size: 24rpx;
+}
+
+.weui-box_bd{
+border-left: 8rpx solid #333;
+height: 75rpx;
+padding-left: 28rpx;
+margin: 30rpx 0 40rpx 0;
+}
+.weui-box_title{
+  font-size: 36rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  padding-bottom: 10rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden
+}
+.weui-box_teachter, .weui-box_desc{
+ font-size: 24rpx;
+  line-height: 25rpx;
+  color: #999
+}
+.weui-box_teachter{
+  height: 25rpx;
+}
+.weui-box_desc{
+padding: 28rpx 36rpx 40rpx 36rpx;
+line-height: 36rpx;
+}

@@ -1,0 +1,53 @@
+/* pages/course/starCourse/starCourse.wxss */
+.weui-box_pic{
+  width: 100%;
+  height: 376rpx;
+  border-radius: 20rpx;
+  background-color: #eeeeee;
+}
+.weui-box_bd{
+border-left: 8rpx solid #333;
+height: 75rpx;
+padding-left: 28rpx;
+margin-top: 30rpx;
+}
+.weui-box_title{
+  font-size: 36rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  padding-bottom: 10rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden
+}
+.weui-box_teachter, .weui-box_desc{
+ font-size: 24rpx;
+  line-height: 25rpx;
+  color: #999
+}
+.weui-box_teachter{
+  height: 25rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden
+}
+.weui-box_desc{
+padding: 22rpx 36rpx 40rpx 36rpx;
+line-height: 40rpx;
+font-size: 28rpx;
+color: #666
+}
+.weui-cell-title .weui-ico{
+  background: #FFAC23;
+}
+
+
+
+
+
+
+
+
+
+
+

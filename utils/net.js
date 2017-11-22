@@ -1,37 +1,10 @@
-var Promise = require('./promise');
+var { request, setConfig, Promise } = require('./promise');
 var Storage = require('./storage');
 var UI = require('./ui');
 
-function wxPromisify(fn) {
-  return function (obj = {}) {
-    return new Promise((resolve, reject) => {
-      obj.success = function (res) {
-        if (res && res.data.rtnCode == "0000000") {
-          //成功
-          resolve(res.data)
-        } else {
-          UI.toast(res.data.msg)
-          reject(res.data)
-        }
-      }
-      obj.fail = function (res) {
-        UI.toast("哎呀，网络连接出错啦")
-        //失败
-        reject(res.data)
-      }
-      fn(obj)
-    })
-  }
-}
-
-//无论promise对象最后状态如何都会执行
-Promise.prototype.finally = function (callback) {
-  let P = this.constructor;
-  return this.then(
-      value => P.resolve(callback()).then(() => value),
-      reason => P.resolve(callback()).then(() => { throw reason })
-  );
-};
+setConfig({
+  concurrency: 10 // 限制最大并发数为 10
+});
 
 /**
  * 微信请求get方法
@@ -39,14 +12,29 @@ Promise.prototype.finally = function (callback) {
  * data 以对象的格式传入
  */
 function getRequest(url, data) {
-  var getRequest = wxPromisify(wx.request)
-  return getRequest({
-    url: url,
-    method: 'GET',
-    data: data,
-    header: {
-      'Content-Type': 'json'
-    }
+
+  return new Promise((resolver, reject) => {
+    request({
+      url: url,
+      method: 'GET',
+      data: data,
+      header: {
+        'Content-Type': 'json'
+      }
+    }).then((res) => {
+      if (res && res.data.rtnCode == "0000000") {
+        //成功
+        resolver(res.data)
+      } else {
+        UI.alert(res.data.msg);
+        reject(res.data);
+      }
+    }).catch(err => {
+      UI.alert("哎呀，网络连接出错啦", 'error');
+      //失败
+      reject(res.data);
+    })
+
   })
 }
 
@@ -57,13 +45,18 @@ function getRequest(url, data) {
  * data 以对象的格式传入
  */
 function postRequest(url, params, data) {
-  var postRequest = wxPromisify(wx.request);
 
   //url鉴权
   let token = Storage.getStorageSync("mingshi_token");
+  let devtag = Storage.getStorageSync("mingshi_devtag");
+
   if (token) {
     params = params || {};
     params.token = token;
+  }
+  if (devtag) {
+    params = params || {};
+    params.devtag = devtag;
   }
 
   var i = 0;
@@ -94,14 +87,50 @@ function postRequest(url, params, data) {
     },
     "data": data
   };
-  return postRequest({
-    url: url,
-    method: 'POST',
-    data: postBody,
-    header: {
-      "content-type": "application/json"
-    }
+
+  return new Promise((resolver, reject) => {
+    request({
+      url: url,
+      method: 'POST',
+      data: postBody,
+      dataType: "json",
+      header: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).then((res) => {
+      if (res && res.data.rtnCode == "0000000") {
+        //成功
+        resolver(res.data)
+      } else {
+        if (res && res.data.rtnCode == "80000009") {
+          Storage.removeStorageSync('mingshi_token');
+          Storage.removeStorageSync('mingshi_devtag');
+          Storage.removeStorageSync('mingshi_userInfo');
+          UI.alert("该账号已登录,如非本人操作请立即修改密码!")
+            .then(res => {
+              wx.reLaunch({
+                url: '/pages/auth/login/login'
+              })
+            });
+          return;
+        }
+        UI.alert(res.data.msg);
+        reject(res.data);
+      }
+    }).catch(err => {
+      var pages = getCurrentPages(); //获取加载的页面
+      var currentPage = pages[pages.length - 1]; //获取当前页面的对象
+      var url = currentPage.route; //当前页面url
+      console.log('res-哎呀----', res)
+      if (url != 'pages/course/courseDetail/courseDetail') {
+        UI.alert("哎呀，网络连接出错啦", 'error');
+      }
+      //失败
+      reject(res.data);
+    })
   })
+
 }
 
 module.exports = {

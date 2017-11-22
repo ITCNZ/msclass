@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="info-main">
+    <view class="pic">
+       <image src="{{userInfo.portrait}}"></image> 
+    </view>
+    <text>{{userInfo.userName}}</text>
+  </view>
+  <view class="btn-area pt30 mt30">
+    <button type="default" bindtap="logout">退出登录 </button>
+  </view>
+</view>

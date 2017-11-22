@@ -1,0 +1,34 @@
+<view class="page container">
+  <view class="head-mian weui-cell">
+    <navigator url="/pages/usercenter/userInfo/userInfo" class="pic">
+      <image src="{{userInfo.portrait}}"></image>
+    </navigator>
+    <view class="head-info weui-cell__bd">
+      <text>{{userInfo.userName}}</text>
+      <text>{{userInfo.schoolName}}</text>
+    </view>
+  </view>
+
+  <view class="weui-cell study-time">
+    <view class="weui-cell__bd text-center">
+      <text>{{studyTime.totalTimes}}</text>
+      <text class="tit">已学习</text>
+    </view>
+    <view class="line"></view>
+    <view class="weui-cell__bd text-center">
+      <text>{{studyTime.totalCourses}}节课</text>
+      <text class="tit">已观看</text>
+    </view>
+  </view>
+
+  <view class="mini-btn-area">
+    <view class="weui-cell">
+      <view class="weui-ico"><i class="iconfont icon-Group"></i> 反馈</view>
+      <view class="weui-cell__bd">
+        <button type="default" open-type="contact"></button>
+      </view>
+      <view class="arr"></view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="weui-cell weui-cell-title title">
+    <view class="weui-ico"><i class="iconfont icon-FillCopy1"></i></view>
+    <view class="weui-cell__bd">已购课程</view>
+  </view>
+  <view class="course-list">
+    <view class="weui-flex__item course-one" wx:for="{{buyCourse}}" wx:key="unique">
+      <view class="weui-inner" bindtap="gocourse" data-courseId="{{item.coursePackageId}}">
+        <image style="width: 100%; height: 100%; background-color: #eeeeee;" src="{{item.coursePackageCover}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="title-bt">
+      <image src="/assets/images/benzhou.png"></image>
+      <view class="tipsBtn" bindtap="tipsInfo"><i class="iconfont icon-Group"></i></view>
+  </view>
+  <view class="must_course">
+    <scroll-view scroll-y wx:if="{{totalRecord > 0}}" >
+      <navigator url="/pages/course/courseDetail/courseDetail?id={{item.id}}" class="weui-flex__item" open-type="navigateTo" wx:for="{{compulsoryCourse}}" wx:key="unique">
+        <view class="weui-inner">
+          <image style="width: 100%; height: 100%; background-color: #eeeeee;" src="{{item.cover}}" lazy-load="true"></image>
+          <view class="course-info">
+            <text class="time" wx:if="{{!item.finish}}">{{item.duration}}</text>
+            <text class="time" wx:if="{{item.finish}}">已完成</text>
+          </view>
+        </view>
+        <view class="weui-box_bd text-left">
+            <view class="weui-box_title">{{item.courseName}}</view>
+            <view class="weui-box_teachter">主讲师：{{item.lecture}}</view>
+        </view>
+      </navigator>
+    </scroll-view>
+  </view>
+
+  <view class="weui-loadmore_line" wx:if="{{totalRecord == 0}}">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">本周暂时没有必修课程</view>
+  </view>
+  <view class="weui-loadmore" wx:if="{{loadingMore}}">
+      <image src="/assets/images/loading.gif"></image>
+      <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+
+</view>

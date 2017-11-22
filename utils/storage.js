@@ -1,4 +1,4 @@
-var Promise = require('./promise');
+var { setConfig, Promise } = require('./promise');
 
 module.exports = {
 

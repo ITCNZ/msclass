@@ -1,0 +1,29 @@
+<!--logs.wxml-->
+<view class="container" wx:if="{{isAuto}}">
+  <view class="title">
+  <image src="/assets/images/logo_title.png"></image>
+  <text>欢迎登录明师课堂</text>
+  </view>
+  
+  <form bindsubmit="formSubmit" bindreset="formReset">
+     <view class="weui-cell">
+        <view class="weui-ico"><i class="iconfont icon-peoplecopy"></i></view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" bindinput="getPhone" type="number" placeholder="请输入手机号码" />
+        </view>
+    </view>
+    <view class="weui-cell">
+        <view class="weui-ico"><i class="iconfont icon-lockcopy"></i></view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" bindinput="getPassword" password placeholder="请输入密码" />
+        </view>
+    </view>
+    <view class="findpass-btn">
+        <text bindtap="forgetPwdBtn">忘记密码</text>
+    </view>
+    <view class="btn-area">
+      <button type="default" bindtap="loginClick" disabled="{{phoneDisable || passDisable}}">登录 </button>
+    </view>
+    
+  </form>
+</view>

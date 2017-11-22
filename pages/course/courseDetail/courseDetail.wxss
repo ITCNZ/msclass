@@ -1,0 +1,168 @@
+/* pages/course/courseDetail/courseDetail.wxss */
+ page{
+  height: 100%;
+  overflow: hidden
+} 
+.video-block{
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  margin: -14rpx -30rpx auto -30rpx;
+}
+.video-block .title-info{
+  padding: 20rpx 30rpx;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  width: 100%;
+  line-height: 40rpx;
+}
+.title-info .title{
+  display: block;
+  flex:1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  word-wrap:normal;
+  word-wrap:break-word;
+  word-break:break-all;
+  margin-right: 30rpx;
+  font-size:30rpx;
+  font-weight: bold
+}
+.title-info .time{
+  display: flex;
+  color: #333;
+  font-size: 28rpx;
+}
+.video-inner{
+  height: 456rpx;
+}
+video{
+  width: 100%;
+  height: 450rpx;
+  float: left
+}
+.video-main{
+   display: flex;
+  box-sizing: border-box;
+  height: 100%;
+  flex:1; 
+  overflow-y: auto
+}
+.video-playinfo view{
+  padding: 8rpx 0;
+  color: #333;
+  font-size: 28rpx;
+}
+.video-playinfo text{
+  padding-right: 10rpx;
+  font-weight: bold;
+   color: #000
+}
+
+ .course-list{
+   margin: 0 -10rpx;
+   width: auto
+} 
+.course-one{
+  position: relative;
+  text-align: center;
+  width: 50%;
+  float: left;
+  font-size: 24rpx;
+}
+
+.weui-inner{
+ margin: 0 10rpx; 
+ height: 190rpx;
+ border-radius: 16rpx;
+ overflow: hidden;
+}
+.course-one .title{
+  position: absolute;
+  text-align: center;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 190rpx;
+  font-size: 32rpx;
+}
+.course-one .course-info{
+  position: absolute;
+  right: 10rpx;
+  top: 0;
+  height: 32rpx;
+  line-height: 32rpx;
+  color: #fff;
+  overflow: hidden;
+  background: rgba(0,0,0,.6);
+  border-radius: 0 14rpx 0 14rpx;
+  padding:0 12rpx 0 4rpx;
+  font-size: 20rpx;
+}
+.course-one .time, .course-one .name{
+  float: left;
+  padding-left: 14rpx;
+}
+
+.course-one .title-info{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding:14rpx 10rpx 0 10rpx;
+  font-weight: bold;
+  text-align: left;
+  font-size: 24rpx;
+  line-height: 34rpx;
+}
+.course-one .title-teacher{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  font-size: 20rpx;
+  color: #999;
+  padding: 0 10rpx;
+}
+
+.netType{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  height: 450rpx;
+  z-index: 999999;
+  font-size: 24rpx;
+}
+.netType-inner{
+  margin-top: 180rpx
+}
+.netType-inner .title{
+  display: block;
+}
+.netType-inner .btn{
+  padding: 10rpx 24rpx;
+  border-radius: 24rpx;
+  background: #29A7E1;
+  color: #fff;
+}
+.loading-mask{
+  width: 100%;
+  height: 100%;
+  position:absolute;
+  left: 0;
+  top: 0;
+  background: rgba(255,255,255,.9);
+
+}
+.loading-mask .weui-loadmore{
+  position: absolute; 
+  left: 50%;
+  margin-left: -70rpx;
+  bottom: 300rpx;
+  color: #666;
+}

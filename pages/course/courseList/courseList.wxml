@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="weui-cell weui-cell-title title">
+    <view class="weui-ico"><i class="iconfont icon-CombinedShapeCopy"></i></view>
+    <view class="weui-cell__bd">{{cataName}}</view>
+  </view>
+
+  <scroll-view scroll-y enable-back-to-top class="course-list" wx:if="{{totalRecord > 0}}">
+    <navigator url="/pages/course/courseDetail/courseDetail?id={{item.id}}" class="weui-flex__item course-one mb30" open-type="navigateTo" wx:for="{{coursesDb}}" wx:key="unique">
+      <view class="weui-inner">
+        <image style="width: 100%; height: 100%; background-color: #eeeeee;" src="{{item.cover}}" lazy-load="true"></image>
+        <view class="course-info">
+          <text class="time">{{item.duration}}</text>
+        </view>
+      </view>
+      <view class="title-info">{{item.courseName}}</view>
+      <view class="title-teacher">主讲师：{{item.lecture}}</view>
+    </navigator>
+  </scroll-view>
+
+  <view class="weui-loadmore_line" wx:if="{{totalRecord == 0}}">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">对不起，本分类暂时没有课程</view>
+  </view>
+
+  <view class="weui-loadmore" wx:if="{{loadingMore}}">
+      <image src="/assets/images/loading.gif"></image>
+      <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+
+</view>

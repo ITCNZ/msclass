@@ -8,7 +8,8 @@ var checkCurrentEnv = function (localEnv) {
     url: {
       teacher: "/teacher/web",
       boss: "/teacher/boss",
-      file: '/teacher/file'
+      file: '/teacher/file',
+      mini: "/teacher/mini"
     },
     env: localEnv
   };
@@ -26,7 +27,7 @@ var checkCurrentEnv = function (localEnv) {
 
 //环境检测
 //当前加载环境 dev：开发环境 test：测试环境 "": 生产环境或本地  pre 预发布
-let SERVER = checkCurrentEnv("dev");
+let SERVER = checkCurrentEnv("pre");
 
 console.log('当前服务器地址....', SERVER);
 

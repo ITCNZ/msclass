@@ -1,0 +1,41 @@
+<!--findpass.wxml-->
+<view class="container">
+   <form bindsubmit="formSubmit" bindreset="formReset" wx:if="{{!showLEditPass}}">
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <input class="weui-input" bindinput="getPhone" type="number" placeholder="请输入手机号码" />
+        </view>
+        <view class="weui-cell__ft">
+            <button type="default" disabled="{{isbackBtn}}" class="weui-vcode-btn v-code-backbtn" bindtap="getcodeBtn">{{backTime}}</button>
+        </view>
+    </view>
+    <view class="weui-cell">
+        <view class="weui-cell__bd">
+            <input class="weui-input" bindinput="getCode" type="number" placeholder="请输入验证码" />
+        </view>
+    </view>
+    <view class="btn-area">
+      <button type="default" bindtap="nextBtnClick" disabled="{{phoneDisable || codeDisable}}">           下一步
+      </button>
+    </view>
+  </form>
+
+<!-- 输入新密码 -->
+<form bindsubmit="formSubmit" bindreset="formReset" wx:if="{{showLEditPass}}">
+    <view class="weui-cell">
+        <view class="weui-ico"><i class="iconfont icon-lockcopy"></i></view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" bindinput="newPass" password placeholder="请输入新密码" />
+        </view>
+    </view>
+    <view class="weui-cell">
+        <view class="weui-ico"><i class="iconfont icon-lockcopy"></i></view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" bindinput="rePass" password placeholder="请确认新密码" />
+        </view>
+    </view>
+    <view class="btn-area">
+        <button type="default" bindtap="resetPwdBtn" disabled="{{newpassDisable || repassDisable}}"> 完成</button>
+    </view>
+    </form>
+</view>

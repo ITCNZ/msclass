@@ -4,6 +4,7 @@ module.exports = {
 
   /**
    * 登录
+   * @param data
    */
   login: function(data) {
     return Net.postRequest(Config.url.teacher + "/login/login", {}, data);
@@ -28,6 +29,7 @@ module.exports = {
 
   /**
    * 修改密码
+   * @param data
    */
   updatePassword: function(data) {
     return Net.postRequest(Config.url.teacher + "/login/updatePassword", {}, data);

@@ -1,11 +1,16 @@
+var { request, setConfig, Promise } = require('./promise');
 
 var UI = {
     toast: function(msg, type) {
-      wx.showToast({
-        title: msg,
-        icon: type,
-        duration: 2000
-      })
+      return new Promise((resolver, reject) => {
+        wx.showToast({
+          title: msg,
+          icon: type,
+          duration: 2000,
+          success: resolver,
+          fail: reject
+        });
+      });
     },
 
     /**
@@ -43,8 +48,14 @@ var UI = {
           fail: reject
         });
       });
-    }
+    },
 
+    /**
+     * 导航loading
+     */
+    navLoading: function(flag) {
+      flag ? wx.showNavigationBarLoading() : wx.hideNavigationBarLoading()
+    }
 };
 
 

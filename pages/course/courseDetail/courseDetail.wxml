@@ -1,0 +1,49 @@
+<!--pages/course/courseDetail/courseDetail.wxml initial-time="{{initPoint}}"-->
+<view class="container">
+  <view class="video-block">
+    <view class="video-inner">
+    <video wx:if="{{!isWifi}}" id="myVideo" src="{{detailData.sourceLd}}" objectFit="fill" bindtimeupdate="currnetimeFn" bindplay="playAuto" enable-danmu controls ></video>
+    </view>
+    <view class="netType" bindtap="bindplayFn" wx:if="{{isWifi}}">
+      <view class="netType-inner">
+        <text class="title pb20">您正在使用非wifi网络</text>
+        <text class="btn">用流量播放</text>
+      </view>
+    </view>
+    <view class="title-info">
+        <text class="title text-left">{{detailData.courseName}}</text>
+        <text class="time text-right">时长：{{detailData.duration}}</text>
+    </view>
+  </view>
+  <view class="video-main"> 
+    <scroll-view scroll-y>
+      <view class="video-playinfo pt20">
+        <view><text>课程分类：</text>{{detailData.courseTypedescr}}</view>
+        <view><text>主讲人：</text>{{detailData.letcture}}</view>
+        <view><text>适合学段：</text>{{detailData.grade}}</view>
+        <view><text>视频简介：</text>{{detailData.description}}</view>
+      </view>
+      <view class="rec-course">
+        <view class="course-title pt30 pb20">课程推荐</view>
+        <view class="course-list">
+          <view class="weui-flex__item course-one mb40" wx:for="{{detailData.recommendCourse}}" wx:key="unique" bindtap="clickCourse" data-courseId="{{item.id}}">
+            <view class="weui-inner">
+              <image style="width: 100%; height: 100%; background-color: #eeeeee;" src="{{item.cover}}" lazy-load="true"></image>
+              <view class="course-info">
+                <text class="time">{{item.duration}}</text>
+              </view>
+            </view>
+            <view class="title-info">{{item.courseName}}</view>
+            <view class="title-teacher">主讲师：{{item.lecture}}</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="loading-mask" wx:if="{{loadMask}}">
+      <view class="weui-loadmore">
+          <image src="/assets/images/loading.gif"></image>
+          <view class="weui-loadmore__tips">正在加载</view>
+      </view>
+    </view>
+  </view>
+</view>
