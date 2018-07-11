@@ -1,0 +1,5 @@
+<!--components/loading/loading.wxml-->
+<view class="weui-loadmore" wx:if="{{loadingMore}}">
+  <image src="/assets/images/loading.gif"></image>
+  <view class="weui-loadmore__tips">{{loadingTit}}</view>
+</view> 

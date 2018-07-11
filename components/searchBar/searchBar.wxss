@@ -1,0 +1,43 @@
+/* components/searchBar/searchBar.wxss */
+.weui-search-bar {
+display:-webkit-box;
+display:-webkit-flex;
+display:flex;
+box-sizing:border-box;
+-webkit-box-align:center;
+-webkit-align-items:center;
+align-items:center;
+background: #F0F0F0;
+   height: 72rpx;
+   border-radius: 12rpx;
+   padding: 0 30rpx;
+   color: #666;
+}
+.weui-search-bar__form {
+-webkit-box-flex:1;
+-webkit-flex:auto;
+flex:auto;
+}
+.weui-search-bar__box {
+width:100%;
+box-sizing:border-box;
+z-index:1;
+-webkit-box-align:center;
+-webkit-align-items:center;
+align-items:center;
+padding: 0;
+}
+
+.weui-cell{
+  display: flex;
+}
+.weui-cell__bd{
+flex: 1;
+}
+
+.weui-search-bar__box{
+  flex-direction:row;
+}
+.weui-search-bar__cancel-btn{
+  padding-left: 20rpx;
+}

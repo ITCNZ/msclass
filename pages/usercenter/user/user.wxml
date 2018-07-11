@@ -1,29 +1,40 @@
+<wxs src="../../../wxs/filter.wxs" module="Filter" />
 <view class="page container">
   <view class="head-mian weui-cell">
-    <navigator url="/pages/usercenter/userInfo/userInfo" class="pic">
+    <view class="pic" bindtap="loginFn" data-typeid="1">
       <image src="{{userInfo.portrait}}"></image>
-    </navigator>
-    <view class="head-info weui-cell__bd">
-      <text>{{userInfo.userName}}</text>
-      <text>{{userInfo.schoolName}}</text>
     </view>
+    <view class="head-info weui-cell__bd" wx:if="{{userInfo}}">
+      <text class="username">{{studyTime.userRank.userName}}</text>
+      <text>{{studyTime.userRank.schoolName}}</text>
+    </view>
+    <view class="head-info login-btn weui-cell__bd" wx:if="{{!userInfo}}" bindtap="loginFn">
+      点击登录
+    </view>
+    <view class="has-study" wx:if="{{userInfo}}">已学习 <text>{{Filter.studyTime(studyTime.userRank.totalTimes)}}</text> 小时</view>
   </view>
 
-  <view class="weui-cell study-time">
-    <view class="weui-cell__bd text-center">
-      <text>{{studyTime.totalTimes}}</text>
+  <view class="weui-cell study-time" wx:if="{{userInfo}}">
+    <view class="weui-cell__bd text-center" bindtap="goHistory" data-status="1">
+      <view class="{{redCircle1 ? 'item' : ''}}"><text class="num">{{studyTime.userRank.totalCourses}}</text> <text>节课</text></view>
       <text class="tit">已学习</text>
     </view>
     <view class="line"></view>
-    <view class="weui-cell__bd text-center">
-      <text>{{studyTime.totalCourses}}节课</text>
-      <text class="tit">已观看</text>
+    <view class="weui-cell__bd text-center" bindtap="goHistory" data-status="2">
+      <view class="{{redCircle2 ? 'item' : ''}}"><text>第</text>  <text class="num">{{studyTime.myRank}}</text>  <text>名</text></view>
+      <text class="tit">园所排名</text>
     </view>
   </view>
 
   <view class="mini-btn-area">
-    <view class="weui-cell">
-      <view class="weui-ico"><i class="iconfont icon-Group"></i> 反馈</view>
+    <view class="flex-cell" bindtap="loginFn">
+      <view class="weui-ico"><image mode="widthFix" class="collect" src="/assets/images/collect_back.png"></image> 我的收藏</view>
+      <view class="weui-cell__bd">
+      </view>
+      <view class="arr"></view>
+    </view>
+    <view class="flex-cell">
+      <view class="weui-ico"><i class="iconfont icon-Group"></i> 意见反馈</view>
       <view class="weui-cell__bd">
         <button type="default" open-type="contact"></button>
       </view>

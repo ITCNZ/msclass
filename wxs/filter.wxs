@@ -1,0 +1,38 @@
+// 转标准时间
+
+var f_min = function(seconds) {
+  if (!seconds) {
+    return 0;
+  }
+  var min = Math.floor(seconds / 60),
+    second = seconds % 60,
+    hour, newMin, time;
+
+  if (min > 60) {
+    hour = Math.floor(min / 60);
+    newMin = min % 60;
+  }
+
+  if (second < 10) { second = '0' + second; }
+  if (min < 10) { min = '0' + min; }
+  if (newMin < 10) { newMin = '0' + newMin; }
+  return hour ? (hour + ':' + newMin + ':' + second) : (min + ':' + second);
+};
+
+/**
+ * 学习时长
+ */
+var studyTime = function(value) {
+  if (!value) {
+    return '0';
+  }
+
+  var time = parseInt(value);
+  var nowNum = (time / 3600).toFixed(1)
+  return nowNum;
+};
+
+module.exports = {
+  f_min: f_min,
+  studyTime: studyTime
+}

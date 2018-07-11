@@ -1,0 +1,39 @@
+/* pages/usercenter/mustCourse/courseList/courseList.wxss */
+.weui-inner{
+  margin: 0 10rpx; 
+  height: 190rpx;
+  border-radius: 16rpx;
+  overflow: hidden
+}
+.must-list-one{
+  padding: 0;
+  display: flex;
+}
+.must-course-img{
+  width: 50%;
+  margin: 0;
+  position: relative
+}
+.must-title-info{
+  width: 50%;
+  padding-left: 32rpx;
+  height: 190rpx;
+}
+
+.must-title-info text{
+  display: block;
+  width: 100%;
+  font-size: 24rpx;
+  line-height: 38rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #999
+}
+.must-title-info .tit1{
+  font-size: 32rpx;
+  line-height: 48rpx;
+  margin:10rpx 0 17rpx 0;
+  font-weight:bold;
+  color: #333
+}

@@ -8,9 +8,14 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.6.6",
+	"libVersion": "1.9.1",
 	"appid": "wxa4b7c205fcc601ec",
 	"projectname": "%E6%98%8E%E5%B8%88%E8%AF%BE%E5%A0%821",
+	"scripts": {
+		"beforeCompile": "",
+		"beforePreview": "",
+		"beforeUpload": ""
+	},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -20,9 +25,30 @@
 			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"plugin": {
 			"current": -1,
 			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "搜索页",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "课程分类",
+					"pathName": "pages/course/allCourse/allCourse",
+					"query": "typeId=3"
+				}
+			]
 		}
 	}
 }

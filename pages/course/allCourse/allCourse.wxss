@@ -1,29 +1,36 @@
 /* pages/course/allCourse/allCourse.wxss */
 page{
   height: 100%;
+  overflow: hidden
 }
 .course-nav{
   border-bottom: 10rpx solid #fff; 
   overflow: hidden;
 }
 .course-list{
-   display: flex; 
-    box-sizing: border-box;
-    height: 100%;
-    flex:1;
-    overflow: hidden;
-}
+  display: flex;  
+  box-sizing: border-box;  
+  height: 100%;    
+  flex:1; 
+  overflow: hidden;
+}  
+ .ios-bottom230{
+  padding-bottom: 330rpx;
+} 
  .course-main{
    margin: 0 -10rpx;
    min-width: 690rpx;
    overflow: hidden;
-   /* padding-bottom: 370rpx; */
+   overflow-y: auto
 } 
 .course-nav scroll-view{
-  display: flex;
   white-space: nowrap;
   overflow-x:auto;
   margin-bottom: 12rpx;
+}
+.course-nav .has-more{
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAABBCAYAAAF5g87AAAAAAXNSR0IArs4c6QAAA6ZJREFUSA111otS6zAMBNA0BPj/n2WG9/VRWaH0Fs24sqXdley4aS/fV9v25bf39/dt35a9vr5u++fn5zVyuVy2r6+va+o4jm0XeXp62i4r/A13IYNZEfMSfHl5uerU5O3tbfv4+LjqlOC+79vDw8O2+yjBJfategnCtLIyAocJA6tGqdDuQKC8UXtCgdTcYfH4+FhZdQ8N2NXz83P5LqskjVOATonK2hLrKuAVkHWmjVDbEPwbIaOXRhBsDRn1G5FNFX597MpmP4K1OUHPji3G6n8NR1CBn2gjDtlpvUrZOg97YYJ9QALZqKpM5aotkCRva3xdq4L+fAjas6PycFk/eiqSOZguAxVJ3qAQQG2DtICu+ayR69qaMMkwgVjd/ckUlGxAJHNSSWTdp4/JnLVkAHVQHmCU+PlA6ukkKQGsjO2yIzUdq2CefGUBsIAMdcNMD/00lWEBIbg21aRFlIBmk31BMAFZCPUcZkKZlDo9pLDSYF9EUoInpqCR6581levdX5OwcoMk620HPeUk2JFOAzgxJZlkfOb1ICzUxCLPs95n0FGqJKREzjQHUMk0FFAUWtZkGiCr+w0tcMvus01NgDTVFz+ySZxkSUuckhAJ8JEvZtDxgrGqmb0FwLM6W1InubVm9QkpGWaA/ULMISSBWdckDPdo2un1kEvWDZnMAwiAQm2lJunwpzGx2kpqUkjXRYi+hTnZdNz7lJwJ636eFjEgdkrmjOP76x8WL5nmnJwecpfFT78mIUoAx1xjm5ix5Pi+oDOYOTECRoTTAUx9UU0kDZZKiYUYX6D10S/NEG8BWfMZd8n2FwDPdDHbTldyfeUs2EwisSk486c9A0rmhENO5YjAsf5FtZD0TKNujmgdYnLwpys9ASFMnzki6z37eZ5kyVklRJhY3V0BLea0QxQPSSziTZ6BzKcPUIzNbvoFkAqqs3QhPgnJw6xuf/+3hRBAqsUjzHnvOUSAaX/FYU5thzRbVUl3vJGuYPtRJRhg1iGI51xSpMgWaW8eTuI8MiMW6/f/rABoEMy4FSVw+g8b1dv2vA0TSwfI9SfaZFZOtQKsDiJqPa3/XVEHotzv3TXP19HfMvl8TYkc9/aicuLpgmcRNq/TTkUBoKz5xLLnU+W0C3hLFMsolfUxD6zfnoLUCZhPUnJi2Q6xfoeFyE9A9hr/356ppJqkfQEbhFRkPFysr6dA1CfgXuwuORVCsDY3kguR/+1hLSYw+46QbmZHyP8AxZN8rwcG0+UAAAAASUVORK5CYII=') right center no-repeat;
+  background-size: auto 80%;
 }
 .course-nav .scroll-item{
   height:40rpx;
@@ -42,7 +49,9 @@ page{
   padding-left: 0;
   background: none;
 }
-
+.scroll-one{
+  display: flex;
+}
 .course-nav .on{
   background: #2E7AFF;
   color: #fff
@@ -108,4 +117,16 @@ page{
   font-size: 20rpx;
   color: #999;
   padding: 0 10rpx;
+}
+
+.weui-cell__bd image{
+  width: 103rpx;
+  height: 38rpx;
+}
+.weui-search-btn{
+  width: 80rpx;
+  height: 60rpx;
+  text-align: right;
+  line-height: 80rpx;
+  padding-top: 20rpx
 }

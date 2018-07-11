@@ -1,0 +1,46 @@
+<!--pages/usercenter/myrank/myrank.wxml-->
+<view class="container">
+  <view class="head-mian weui-cell">
+    <view class="pic">
+      <image src="{{userInfo.portrait}}"></image>
+    </view>
+    <view class="head-info weui-cell__bd">
+      <text class="username">{{userInfo.userName}}</text>
+      <text>提升排名只需 {{myRank.distance}}节课</text>
+    </view>
+    <view class="has-study">第 <text>{{myRank.myRank}}</text> 名</view>
+  </view>
+  <view class="rank-tips" wx:if="{{showTips}}">
+    <text>说明</text>
+    <text>1.排名根据老师学习完成课程数进行排名</text>
+    <text>2.只有课程全部学习完成才能获得学分哦~</text>
+    <view class="close" bindtap="closeFn">×</view>
+  </view>
+  <view class="rank-wrap">
+    <view class="rank-tit">
+      <text>排名</text>
+      <text>姓名</text>
+      <text>完成课程数</text>
+      <text>获得学分</text>
+    </view>
+    <view class="rank-list">
+      <view class="rank-1" wx:for="{{myRank.userRanks}}" wx:key="unique">
+        <i wx:if="{{index<=2}}">
+          <image mode="widthFix" src="/assets/images/rank{{index+1}}.png"></image>
+        </i>
+        <i wx:else>{{index+1}}</i>
+        <text>{{item.userName}}</text>
+        <text>{{item.totalCourses}}</text>
+        <text>{{item.totalScore}}</text>
+      </view>
+      <loading-component loading-more="{{loadingMore}}"></loading-component>
+    </view>
+  </view>
+
+
+
+
+
+
+
+</view>

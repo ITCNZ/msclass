@@ -103,11 +103,25 @@ function postRequest(url, params, data) {
         //成功
         resolver(res.data)
       } else {
+        // 未登录
         if (res && res.data.rtnCode == "80000009") {
           Storage.removeStorageSync('mingshi_token');
           Storage.removeStorageSync('mingshi_devtag');
           Storage.removeStorageSync('mingshi_userInfo');
           UI.alert("该账号已登录,如非本人操作请立即修改密码!")
+            .then(res => {
+              wx.reLaunch({
+                url: '/pages/home/home'
+              })
+            });
+          return;
+        }
+        // 园所开通到期
+        if (res && res.data.rtnCode == "80000008") {
+          Storage.removeStorageSync('mingshi_token');
+          Storage.removeStorageSync('mingshi_devtag');
+          Storage.removeStorageSync('mingshi_userInfo');
+          UI.alert("您所在的园所开通时间已到期,请续费!")
             .then(res => {
               wx.reLaunch({
                 url: '/pages/auth/login/login'

@@ -1,4 +1,4 @@
-/* @import '/assets/css/weui.wxss'; */
+@import '/assets/css/weui.wxss';   
 @import '/assets/css/font.wxss';
 
 /**app.wxss**/
@@ -60,28 +60,18 @@ margin-bottom:40rpx
 .text-right{
   text-align: right
 }
-.weui-loadmore, .weui-loadmore_line{
+.weui-loadmore_line{
   font-size: 24rpx;
   clear: both;
   color: #999;
   text-align: center;
   padding: 40rpx 0;
 }
-.weui-loadmore{
-  display: flex;
-  width: 140rpx;
-  margin: 0 auto;
-}
 .weui-loadmore__tips{
   flex: 1
 }
-.weui-loadmore image{
-  width: 24rpx;
-  height: 24rpx;
-  margin-top: 7rpx;
-}
 .weui-loadmore_line{
-  padding-top: 100rpx;
+  padding-top: 0;
 }
 button[type="default"]{
   height: 100rpx;
@@ -104,6 +94,8 @@ button[disabled][type="default"]:active{
 button::after{
   border: none;
 }
+
+/**flex布局**/
 .weui-cell{
   display: flex;
 }

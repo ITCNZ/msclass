@@ -1,39 +1,56 @@
 <!--pages/course/allCourse/allCourse.wxml-->
+<wxs src="../../../wxs/filter.wxs" module="Filter" />
 <view class="container">
   <view class="course-nav">
-    <view class="course-nav-inner">
+    <view class="course-nav-inner" wx:if="{{!loadingNav}}">
       <view class="weui-cell weui-cell-title title">
-        <view class="weui-ico"><i class="iconfont icon-CombinedShapeCopy"></i></view>
-        <view class="weui-cell__bd">全园学习课程</view>
+        <view class="weui-cell__bd">{{courseType.courseName}}
+        <image mode="widthFix" src="{{isbuy==0 ? '/assets/images/wkt_ico.png' : '/assets/images/ykt_ico.png'}}"></image>
+        </view>
+        <navigator class="weui-search-btn" url="/pages/search/search">
+          <icon type="search" size="20"/>
+        </navigator>
       </view>
-      <scroll-view scroll-x wx:for="{{courseType}}" wx:key="unique">
-        <view class="scroll-item scroll-item-one">{{item.name}}</view>
-        <view class="scroll-item {{currentItem==item.id ? 'on' : ''}}" bindtap="clickCourse" data-typeid="{{item.id}}" wx:for="{{item.child}}" wx:key="unique">{{item.name}}</view>
-      </scroll-view>
+      <view class="scroll-one">
+        <scroll-view scroll-x wx:if="{{courseType.rootId ==2}}" class="has-more">
+          <view class="scroll-item scroll-item-one">分类</view>
+          <view class="scroll-item {{currentCata==item.id ? 'on' : ''}}" bindtap="clickCourse" data-typeid="{{item.id}}" wx:for="{{courseType.courseCata}}" wx:key="unique">{{item.name}}</view>
+        </scroll-view>
+      </view>
+      <view class="scroll-one">
+        <scroll-view scroll-x>
+          <view class="scroll-item scroll-item-one">学段</view>
+          <view class="scroll-item {{currentGrade==item ? 'on' : ''}}" bindtap="clickCourse" data-gradeid="{{item}}" wx:for="{{courseType.grade}}" wx:key="unique">{{item ? item : '全部'}}</view>
+        </scroll-view>
+      </view>
+      <view class="scroll-one">
+        <scroll-view scroll-x class="has-more">
+          <view class="scroll-item scroll-item-one">形式</view>
+          <view class="scroll-item {{currentShape==item.id ? 'on' : ''}}" bindtap="clickCourse" data-shapeid="{{item.id}}" wx:for="{{courseType.courseShape}}" wx:key="unique">{{item.courseShape}}</view>
+        </scroll-view>
+        <view class="more-ico"></view>
+      </view>
     </view>
+    <loading-component loading-more="{{loadingNav}}" loading-tit="加载分类"></loading-component>
   </view>
   
-  
   <scroll-view scroll-y enable-back-to-top lower-threshold="1" class="course-list" bindscrolltolower="scrollBottom">
-    <view class="course-main">
-      <navigator url="/pages/course/courseDetail/courseDetail?id={{item.id}}" class="weui-flex__item course-one mb40" open-type="navigateTo" wx:for="{{coursesDb}}" wx:key="unique">
+    <view class="course-main {{isIos ? 'ios-bottom230' : ''}}">    
+      <view class="weui-flex__item course-one mb40" data-courseId="{{item.courseId}}" bindtap="goDetail" wx:for="{{coursesDb}}" wx:key="unique">
         <view class="weui-inner">
-          <image style="width: 100%; height: 100%; background-color: #eeeeee;" src="{{item.cover}}" lazy-load="true"></image>
+          <image style="width: 100%; height: 100%; background-color: #eeeeee;" src="{{item.courseCover}}" lazy-load="true"></image>
           <view class="course-info">
-            <text class="time">{{item.duration}}</text>
+            <text class="time">{{Filter.f_min(item.courseDuration)}}</text>
           </view>
         </view>
         <view class="title-info">{{item.courseName}}</view>
-        <view class="title-teacher">主讲师：{{item.lecture}}</view>
-      </navigator>
+        <view class="title-teacher">主讲师：{{item.courseLecture}}</view>
+      </view>
       <view class="weui-loadmore_line" wx:if="{{totalRecord == 0 && !loadingMore}}">
         <view class="weui-loadmore__tips weui-loadmore__tips_in-line">本分类暂时没有课程</view>
       </view>
-      <view class="weui-loadmore" wx:if="{{loadingMore}}">
-        <image src="/assets/images/loading.gif"></image>
-        <view class="weui-loadmore__tips">正在加载</view>
-      </view> 
-    </view>
+    </view>  
   </scroll-view>
+  <loading-component loading-more="{{loadingMore}}"></loading-component>
 </view>
 

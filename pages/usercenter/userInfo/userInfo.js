@@ -35,8 +35,11 @@ Page({
     wx.removeStorageSync('mingshi_token');
     wx.removeStorageSync('mingshi_devtag');
     wx.removeStorageSync('mingshi_userInfo');
+    wx.removeStorageSync('myrank');
+    wx.removeStorageSync("redCircle1");
+    wx.removeStorageSync("redCircle2");
     wx.reLaunch({
-      url: '../../auth/login/login'
+      url: '/pages/usercenter/user/user'
     })
   },
 

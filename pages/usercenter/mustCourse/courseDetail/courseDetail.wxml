@@ -1,0 +1,25 @@
+<!--pages/usercenter/mustCourse/courseDetail/courseDetail.wxml-->
+<wxs src="../../../../wxs/filter.wxs" module="Filter" />
+<view class="container">
+  <view class="must-course-info"><span>必修课周数：{{weekcount}}周</span><span>学习人数：{{learncount}}人</span></view>
+  <scroll-view scroll-y enable-back-to-top lower-threshold="1" class="must-study-course">
+    <navigator class="must-list-one mb40" wx:for="{{mustCourse}}" wx:key="unique" url="/pages/course/courseDetail/courseDetail?id={{item.courseId}}">
+      <view class="weui-inner must-course-img">
+        <image style="width: 100%; height: 100%; background-color: #eeeeee;" src="{{item.courseCover}}" lazy-load="true"></image>
+        <view class="course-info">
+          <text class="time">{{Filter.f_min(item.courseDuration)}}</text>
+        </view>
+        <view class="mask">
+          <text class="arr yes" wx:if="{{item.courseIsFinish}}">已完成</text>
+          <text class="arr" wx:else>未完成</text>
+        </view>
+      </view>
+      <view class="must-title-info">
+        <text class="tit1">{{item.courseName}}</text>
+        <text>第{{item.courseWeek}}周第{{item.courseSection}}节</text>
+        <text>主讲人：{{item.courseLecture}}</text>
+      </view>
+    </navigator>
+  </scroll-view>
+  <loading-component loading-more="{{loadingMore}}"></loading-component>
+</view>

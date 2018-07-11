@@ -1,7 +1,6 @@
 var API = require('../../../api/api');
 var { Storage, Filter, UI } = require('../../../utils/util');
 var MD5 = require('../../../assets/js/md5');
-const app = getApp()
 
 Page({
   data: {
@@ -14,15 +13,19 @@ Page({
     passDisable: true,
     isAuto: false
   },
+  // onLoad: function (options) {
+  //   var scan_url = decodeURIComponent(options.q)
+  //   console.log('这是扫码参数', scan_url)
+  // },
   onReady: function() {
     if (Storage.getStorageSync("mingshi_token")) {
       if (app.globalData.systemInfo.system.indexOf('iOS') > -1) { // ios 
         wx.switchTab({
-          url: '/pages/usercenter/myCourse/myCourse'
+          url: '/pages/home/home'
         })
       } else { 
         wx.reLaunch({
-          url: '/pages/usercenter/myCourse/myCourse'
+          url: '/pages/home/home'
         })
       }
     } else {
@@ -34,17 +37,20 @@ Page({
       phoneDisable: true,
       passDisable: true
     });
-    UI.toast('正在登录', 'loading')
+    UI.toast('正在登录', 'loading');
+    UI.navLoading(true);
     Storage.setStorageSync("mingshi_devtag", this.data.loginData.devtag);
     API.Auth.login(this.data.loginData)
       .then(res => {
         Storage.setStorageSync("mingshi_token", res.bizData.token);
+      }).then(res => {
         // 登陆成功获取用户信息
         API.User.getUserInfo()
           .then(res => {
+            UI.navLoading(false);
             Storage.setStorageSync("mingshi_userInfo", res.bizData);
             wx.reLaunch({
-              url: '../../usercenter/myCourse/myCourse'
+              url: '/pages/home/home'
             })
             this.setData({
               phoneDisable: false,

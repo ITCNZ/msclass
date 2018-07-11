@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+      "searchBar-component": "/components/searchBar/searchBar",
+      "loading-component": "/components/loading/loading"
+    },
+    "navigationBarTitleText": "课程搜索"
+}

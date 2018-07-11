@@ -1,9 +1,11 @@
 
-.weui-cell{
+.weui-cell-login{
   border-bottom: 1px solid #D8D8D8;
   padding: 50rpx 0 5rpx 0;
+  display: flex;
+  display: -webkit-flex
 }
-.weui-cell input{
+.weui-cell-login input{
   width: 100%
 }
 .v-code-backbtn[type="default"]{
@@ -22,4 +24,7 @@
   padding-right: 20rpx;
   font-size: 38rpx;
   line-height: 46rpx;
+}
+.weui-cell__ft{
+  padding-top: 10rpx;
 }

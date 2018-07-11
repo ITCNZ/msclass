@@ -1,40 +1,43 @@
 {
-  "pages":[
+  "pages": [
+    "pages/home/home",
+    "pages/usercenter/user/user",
+    "pages/course/allCourse/allCourse",
+    "pages/course/courseDetail/courseDetail",
+    "pages/usercenter/userInfo/userInfo",
     "pages/auth/login/login",
     "pages/auth/findpass/findpass",
-
-    "pages/usercenter/myCourse/myCourse",
-    "pages/usercenter/user/user",
-
-    "pages/course/allCourse/allCourse",
-    "pages/course/courseList/courseList",
-    "pages/course/courseDetail/courseDetail",
-    "pages/course/starCourse/starCourse",
-    "pages/usercenter/userInfo/userInfo"
+    "pages/search/search",
+    "pages/course/courseCata/courseCata",
+    "pages/usercenter/mustCourse/courseList/courseList",
+    "pages/usercenter/mustCourse/courseDetail/courseDetail",
+    "pages/usercenter/myrank/myrank",
+    "pages/usercenter/myCollect/myCollect",
+    "pages/usercenter/historyCourse/historyCourse"
   ],
   "tabBar": {
     "color": "#000000",
     "selectedColor": "#2E7AFF",
     "list": [
       {
-        "pagePath": "pages/usercenter/myCourse/myCourse",
-        "text": "我的课程",
+        "pagePath": "pages/home/home",
+        "text": "课程",
         "iconPath": "assets/images/ico_star.png",
         "selectedIconPath": "assets/images/ico_star_active.png"
       },
       {
         "pagePath": "pages/usercenter/user/user",
-        "text": "个人中心",
+        "text": "我的",
         "iconPath": "assets/images/ico_user.png",
         "selectedIconPath": "assets/images/ico_user_active.png"
       }
     ]
   },
-  "window":{
-    "backgroundTextStyle":"dark",
+  "window": {
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "明师课堂",
-    "navigationBarTextStyle":"black",
+    "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   }
 }

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "播放记录",
+  "usingComponents": {
+    "loading-component": "/components/loading/loading"
+  }
+}

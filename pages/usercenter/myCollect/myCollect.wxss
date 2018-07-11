@@ -1,0 +1,83 @@
+/* pages/usercenter/myCollect/myCollect.wxss */
+page{
+  height: 100%;
+  overflow: hidden
+}
+.course-list{
+  display: flex;  
+  box-sizing: border-box;  
+  height: 100%;    
+  flex:1; 
+  overflow: hidden;
+}  
+ .ios-bottom230{
+  padding-bottom: 330rpx;
+} 
+ .course-main{
+   margin: 0 -10rpx;
+   min-width: 690rpx;
+   overflow: hidden;
+   overflow-y: auto
+} 
+
+.course-one{
+  position: relative;
+  text-align: center;
+  width: 50%;
+  float: left;
+  font-size: 24rpx;
+}
+
+.weui-inner{
+ margin: 0 10rpx; 
+ height: 190rpx;
+ border-radius: 16rpx;
+ overflow: hidden
+}
+.course-one .title{
+  position: absolute;
+  text-align: center;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 190rpx;
+  font-size: 32rpx;
+}
+.course-one .course-info{
+  position: absolute;
+  right: 10rpx;
+  top: 0;
+  height: 32rpx;
+  line-height: 32rpx;
+  color: #fff;
+  overflow: hidden;
+  background: rgba(0,0,0,.6);
+  border-radius: 0 14rpx 0 14rpx;
+  padding:0 12rpx 0 4rpx;
+  font-size: 20rpx;
+}
+.course-one .time, .course-one .name{
+  float: left;
+  padding-left: 14rpx;
+}
+
+.course-one .title-info{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding:14rpx 10rpx 0 10rpx;
+  font-weight: bold;
+  text-align: left;
+  font-size: 24rpx;
+  line-height: 34rpx;
+}
+.course-one .title-teacher{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  font-size: 20rpx;
+  color: #999;
+  padding: 0 10rpx;
+}

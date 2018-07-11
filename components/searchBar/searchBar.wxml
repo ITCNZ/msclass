@@ -1,0 +1,14 @@
+<!--components/searchBar/searchBar.wxml-->
+<view class="component-searchBar weui-search-bar">
+  <form class="weui-search-bar__form">
+      <view class="weui-search-bar__box weui-cell">
+          <input type="search" class="weui-search-bar__input weui-cell__bd" confirm-type="search" placeholder="搜索" focus="{{focus}}" bindinput="_inputFn" bindblur="_blurFn" bindfocus="_focusFn" value="{{inputValue}}" bindconfirm="_confirmFn" />
+          <a href="javascript:" class="search-cancel-btn" wx:if="{{valLength}}" bindtap="_clearInput">
+            <icon type="clear" size="14" wx:if="{{valLength}}" />
+          </a>
+      </view>
+  </form>
+  <a href="javascript:" class="weui-search-bar__cancel-btn" wx:if="{{focus}}" bindtap="searchFn">
+    <icon type="search" size="18"/>
+  </a>
+</view>

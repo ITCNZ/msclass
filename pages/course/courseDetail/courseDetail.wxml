@@ -1,27 +1,52 @@
-<!--pages/course/courseDetail/courseDetail.wxml initial-time="{{initPoint}}"-->
+<!--pages/course/courseDetail/courseDetail.wxml-->
+<wxs src="../../../wxs/filter.wxs" module="Filter" />
 <view class="container">
   <view class="video-block">
     <view class="video-inner">
-    <video wx:if="{{!isWifi}}" id="myVideo" src="{{detailData.sourceLd}}" objectFit="fill" bindtimeupdate="currnetimeFn" bindplay="playAuto" enable-danmu controls ></video>
+    <video wx:if="{{(userId && detailData.isbuy==1 && isWifi==false) || free}}" id="myVideo" src="{{detailData.sourceLd}}" objectFit="fill" bindtimeupdate="currnetimeFn" bindended="playEnd" bindplay="playFn" bindpause="pauseFn" enable-danmu controls></video>
     </view>
-    <view class="netType" bindtap="bindplayFn" wx:if="{{isWifi}}">
+
+    <view class="netType" bindtap="bindplayFn" data-status='1' wx:if="{{!free && !userId}}">
+      <view class="netType-inner">
+        <text class="title pb20">您还没有登录</text>
+        <text class="btn">去登录</text>
+      </view>
+    </view>
+    <view class="netType" data-status='2' wx:elif="{{userId && detailData.isbuy==0}}">
+      <view class="netType-inner">
+        <text class="title pb20">您可以联系客服进行开通</text>
+        <text class="btn">未开通</text>
+      </view>
+    </view>
+    <view class="netType" bindtap="bindplayFn" data-status='3' wx:elif="{{userId && detailData.isbuy==1 && isWifi}}">
       <view class="netType-inner">
         <text class="title pb20">您正在使用非wifi网络</text>
         <text class="btn">用流量播放</text>
       </view>
     </view>
+
     <view class="title-info">
         <text class="title text-left">{{detailData.courseName}}</text>
-        <text class="time text-right">时长：{{detailData.duration}}</text>
+        <text class="time text-right">时长：{{Filter.f_min(detailData.duration)}}</text>
+        <view class="collect-btn" bindtap="collectFn">
+          <image mode="widthFix" src="{{isCollect==2 ? '/assets/images/collect_pre.png' : '/assets/images/collect_back.png'}}"></image>
+        </view>
     </view>
   </view>
   <view class="video-main"> 
     <scroll-view scroll-y>
       <view class="video-playinfo pt20">
-        <view><text>课程分类：</text>{{detailData.courseTypedescr}}</view>
-        <view><text>主讲人：</text>{{detailData.letcture}}</view>
-        <view><text>适合学段：</text>{{detailData.grade}}</view>
-        <view><text>视频简介：</text>{{detailData.description}}</view>
+        <view><text class="tit">课程分类：</text>{{detailData.courseTypedescr}}</view>
+        <view><text class="tit">主讲人：</text>{{detailData.letcture}}</view>
+        <view><text class="tit">适合学段：</text>{{detailData.grade}}</view>
+        <view><text class="tit">视频简介：</text>{{detailData.description}}</view>
+        <view wx:if="{{detailData.chapterlist.length > 0}}">
+          <text class="tit">课程章节：</text>
+          <view class="chapters">
+            <view class="chapter-line"></view>
+            <view class="item" wx:for="{{detailData.chapterlist}}" wx:key="unique"><i></i>{{item.chapterName}}</view>
+          </view>
+        </view>
       </view>
       <view class="rec-course">
         <view class="course-title pt30 pb20">课程推荐</view>
@@ -30,7 +55,7 @@
             <view class="weui-inner">
               <image style="width: 100%; height: 100%; background-color: #eeeeee;" src="{{item.cover}}" lazy-load="true"></image>
               <view class="course-info">
-                <text class="time">{{item.duration}}</text>
+                <text class="time">{{Filter.f_min(item.duration)}}</text>
               </view>
             </view>
             <view class="title-info">{{item.courseName}}</view>
@@ -40,10 +65,9 @@
       </view>
     </scroll-view>
     <view class="loading-mask" wx:if="{{loadMask}}">
-      <view class="weui-loadmore">
-          <image src="/assets/images/loading.gif"></image>
-          <view class="weui-loadmore__tips">正在加载</view>
-      </view>
+       <view class="weui-loadmore">
+          <loading-component loading-more="true"></loading-component>
+      </view> 
     </view>
   </view>
 </view>

@@ -3,56 +3,35 @@ var { Net, Config } = require('../utils/util');
 module.exports = {
 
   /**
-   * 我的课程页
+   * 首页推荐课程
    * @param userId
    */
-  getbuyCoursePackage: function (userId) {
-    return Net.postRequest(Config.url.mini + "/courseProgram/getbuyCoursePackage", {}, { 'userId': userId });
+  getRecommendCourse: function (userId) {
+    return Net.postRequest(Config.url.mini + "/courseProgram/getRecommendCourse", {}, { 'userId': userId });
   },
 
   /**
-   * 本周必修课
-   * @param userId
-   */
-  getMycourseInfo: function (data) {
-    return Net.postRequest(Config.url.mini + "/courseProgram/getMycourseInfo", {}, data);
-  },
-
-  /**
-   * 体验课程
+   * 首页本周必修课
    * @param data
    */
-  getExperiencecourse: function (data) {
-    return Net.postRequest(Config.url.mini + "/courseProgram/getExperiencecourse", {}, data);
+  getMyCoursePlanByWeek: function (data) {
+    return Net.postRequest(Config.url.mini + "/courseProgram/getMyCoursePlanByWeek", {}, data);
   },
 
   /**
-   * 明星课程分类
-   */
-  getSuperTypeCourse: function (userId) {
-    return Net.postRequest(Config.url.mini + "/courseProgram/getSuperTypeCourse", {}, { 'userId': userId});
-  },
-
-  /**
-   * 明星课程列表
+   * 课程分类信息
    * @param data
    */
-  getSuperCourseInfoList: function (data) {
-    return Net.postRequest(Config.url.mini + "/courseProgram/getSuperCourseInfoList", {}, data);
+  getCourseTypeSearchInfo: function (data) {
+    return Net.postRequest(Config.url.mini + "/courseProgram/getCourseTypeSearchInfo", {}, data);
   },
 
   /**
-   * 全员课程类型
+   * 课程分页列表
+   * @param data
    */
-  getAllCourseInfoList: function () {
-    return Net.postRequest(Config.url.mini + "/courseProgram/getAllCourseInfoList", {}, {});
-  },
-
-  /**
-   * 全员课程列表
-   */
-  getAllCourseDetailInfo: function (data) {
-    return Net.postRequest(Config.url.mini + "/courseProgram/getAllCourseDetailInfo", {}, data);
+  getCoursePageByTypeId: function (data) {
+    return Net.postRequest(Config.url.mini + "/courseProgram/getMiniCourse4PageByTypeId", {}, data);
   },
 
   /**
@@ -84,8 +63,56 @@ module.exports = {
  * 获取视频上次播放的时间点
  * @param courseId
  */
-  getLastLearnTime: function(courseId) {
+  getLastLearnTime: function (courseId) {
     return Net.postRequest(Config.url.teacher + "/course/getLastLearnTime", {}, { 'courseId': courseId });
-  }
+  },
+
+  /**
+   * 搜索页关键词
+   */
+  getSearchKeyWord: function () {
+    return Net.postRequest(Config.url.mini + "/courseProgram/getSearchKeyWord", {}, {});
+  },
+
+  /**
+  * 搜索结果
+  * @param data
+  */
+  getSearchKeyCourseList: function (data) {
+    return Net.postRequest(Config.url.mini + "/courseProgram/getSearchKeyCourseList", {}, data);
+  },
+
+  /**
+  * 课程目录
+  * @param courseId
+  */
+  getCourseCatalog: function (userId) {
+    return Net.postRequest(Config.url.mini + "/courseProgram/getCourseCatalog", {}, { 'userId': userId});
+  },
+
+  /**
+  * 我的必修课列表
+  * @param data
+  */
+  getCoursePlanListByUserId: function (data) {
+    return Net.postRequest(Config.url.mini + "/courseProgram/getCoursePlanListByUserId", {}, data);
+  },
+
+  /**
+  * 我的必修课详情
+  * @param data
+  */
+  getCoursePlanDetail: function (data) {
+    return Net.postRequest(Config.url.mini + "/courseProgram/getCoursePlanDetail", {}, data);
+  },
+
+  /**
+  * 收藏课程
+  * @param data
+  */
+  collect: function (data) {
+    return Net.postRequest(Config.url.teacher + "/collect/collect", {}, data);
+  },
+
 
 }

@@ -20,11 +20,13 @@ color: #2E7AFF;
   height: 80rpx;
   margin-right: 30rpx;
 }
-.weui-cell{
+.weui-cell-login{
   border-bottom: 1px solid #D8D8D8;
   padding: 50rpx 0 10rpx 0;
+  display: flex;
+  display: -webkit-flex;
 }
-.weui-cell input{
+.weui-cell-login input{
   width: 100%;
   line-height: 54rpx;
 }
@@ -32,6 +34,9 @@ color: #2E7AFF;
   padding-right: 20rpx;
   font-size: 38rpx;
   line-height: 46rpx;
+  float:left;
+  margin-top:11rpx;
+
 }
 
 

@@ -1,0 +1,26 @@
+/* components/loading/loading.wxss */
+.weui-loadmore{
+  font-size: 24rpx;
+  clear: both;
+  color: #999;
+  text-align: center;
+  padding: 40rpx 0;
+  height: 40rpx;
+  line-height: 40rpx;
+  overflow: hidden
+}
+.weui-loadmore{
+  display: flex;
+  width: 140rpx;
+  margin: 0 auto;
+}
+.weui-loadmore__tips{
+  flex: 1
+}
+.weui-loadmore image{
+  width: 24rpx;
+  height: 24rpx;
+  margin-top: 10rpx;
+  float: left;
+  vertical-align: middle;
+}

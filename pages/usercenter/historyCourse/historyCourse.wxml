@@ -1,0 +1,30 @@
+<!--pages/usercenter/historyCourse/historyCourse.wxml-->
+<wxs src="../../../wxs/filter.wxs" module="Filter" />
+<view class="container">
+  <scroll-view scroll-y enable-back-to-top lower-threshold="1" class="course-list mt30">
+    <view class="course-main">
+      <view class="must-course" wx:for="{{historyCourse}}" wx:key="unique">
+        <view class="data-time">{{item.date}}</view>
+        <view class="must-study-course">
+          <navigator url="/pages/course/courseDetail/courseDetail?id={{must.id}}" class="must-list-one mb40" wx:for="{{item.courses}}" wx:for-item="must" wx:key="unique1">
+            <view class="weui-inner must-course-img">
+              <image style="width: 100%; height: 100%; background-color: #eeeeee;" src="{{must.cover}}" lazy-load="true"></image>
+              <view class="course-info">
+                <text class="time">{{Filter.f_min(must.duration)}}</text>
+              </view>
+            </view>
+            <view class="must-title-info">
+              <text class="tit1">{{must.courseName}}</text>
+              <text>主讲人：{{must.lecture}}</text>
+              <text>观看到：{{Filter.f_min(must.lastLearnTime)}}</text>
+            </view>
+          </navigator>
+        </view>
+      </view>
+    </view>  
+  </scroll-view>
+  <view class="weui-loadmore_line" wx:if="{{historyCourse.length == 0 && !loadingMore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">您还没有观看过任何课程哦！</view>
+  </view>
+  <loading-component loading-more="{{loadingMore}}"></loading-component>
+</view>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的必修课",
+  "usingComponents": {
+    "loading-component": "/components/loading/loading"
+  }
+}

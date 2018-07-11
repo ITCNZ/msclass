@@ -1,0 +1,46 @@
+<!--pages/course/courseCata/courseCata.wxml-->
+<view class="container">
+  <view class="first-tit" wx:if="{{courseCatalog[1].length > 0}}">体验课程</view>
+  <view class="course-cata-list" wx:if="{{courseCatalog[1].length > 0}}">
+    <navigator url="/pages/course/allCourse/allCourse?id={{item.typeId}}&typename={{item.typeName}}&rootid=1" class="couse-cata-one" wx:for="{{courseCatalog[1]}}" wx:key="unique">
+      <view class="weui-inner">
+        <image style="width: 100%; height: 100%; background-color: #eeeeee;" src="{{item.cover}}"></image>
+        <view class="mask">
+          <text class="arr yes" wx:if="{{item.isbuy == 1}}">已开通</text>
+          <text class="arr" wx:else>未开通</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view class="first-tit" wx:if="{{courseCatalog[2].length > 0}}">全园学习课程</view>
+  <view class="course-cata-list" wx:if="{{courseCatalog[2].length > 0}}">
+    <navigator url="/pages/course/allCourse/allCourse?id={{item.typeId}}&typename={{item.typeName}}&rootid=2" class="couse-cata-one" wx:for="{{courseCatalog[2]}}" wx:key="unique">
+      <view class="weui-inner">
+        <image style="width: 100%; height: 100%; background-color: #eeeeee;" src="{{item.cover}}"></image>
+        <view class="mask">
+          <text class="arr yes" wx:if="{{item.isbuy == 1}}">已开通</text>
+          <text class="arr" wx:else>未开通</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view class="first-tit" wx:if="{{courseCatalog[3].length > 0}}">明星课程</view>
+  <view class="course-cata-list" wx:if="{{courseCatalog[3].length > 0}}">
+    <navigator url="/pages/course/allCourse/allCourse?id={{item.typeId}}&typename={{item.typeName}}&rootid=3" class="couse-cata-one" wx:for="{{courseCatalog[3]}}" wx:key="unique">
+      <view class="weui-inner">
+        <image style="width: 100%; height: 100%; background-color: #eeeeee;" src="{{item.cover}}"></image>
+        <view class="mask">
+          <text class="arr yes" wx:if="{{item.isbuy == 1}}">已开通</text>
+          <text class="arr" wx:else>未开通</text>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <loading-component loading-more="{{loadingMore}}"></loading-component>
+  <view class="title-bt" wx:if="{{!userId}}">
+      <view class="tipsBtn">
+        <i class="iconfont icon-Group"></i>
+        <button type="default" open-type="contact" class="contact-btn-area" style="border-radius:0;background:none;display: inline-block;">开通课程？</button>
+      </view>
+  </view>
+</view>

@@ -1,0 +1,69 @@
+/* pages/course/courseCata/courseCata.wxss */
+.first-tit{
+  font-size: 36rpx;
+  font-weight: bold;
+  line-height: 50rpx;
+  margin-bottom: 16rpx;
+}
+
+.course-cata-list{
+  overflow: hidden;
+  margin: 0 -13rpx  34rpx -13rpx;
+}
+.couse-cata-one{
+  width: 50%;
+  float: left;
+  height: 190rpx;
+  overflow: hidden;
+  margin: 16rpx 0;
+}
+.weui-inner{
+  width: 100%;
+  height: 100%;
+  padding: 0 13rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.weui-inner image{
+  border-radius: 12rpx;
+}
+.weui-inner .mask{
+  position: absolute;
+  left: 13rpx;
+  top: 0;
+  right: 13rpx;
+  bottom: 0;
+  overflow: hidden;
+  border-radius: 12rpx;
+}
+.weui-inner .arr{
+  position: absolute;
+  left: -53rpx;
+  top: -53rpx;
+  width: 110rpx;
+  height: 110rpx;
+  font-size: 20rpx;
+  color: #fff;
+  background: #ccc;
+  text-align: center;
+  -ms-transform:rotate(-45deg); /* IE 9 */
+  -moz-transform:rotate(-45deg); /* Firefox */
+  -webkit-transform:rotate(7deg); /* Safari and Chrome */
+  -o-transform:rotate(-45deg); /* Opera */
+  transform: rotate(-45deg);
+  line-height: 184rpx;
+}
+.weui-inner .yes{
+  background: #2E7AFF;
+}
+.title-bt i, .title-bt button,.title-bt button:hover{
+  color: #5494FC;
+  font-size: 32rpx;
+  float: left;
+}
+.title-bt button{
+  padding-left: 8rpx;
+}
+.title-bt i{
+  margin-top: 16rpx;
+}

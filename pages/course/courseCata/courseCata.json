@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "课程分类",
+  "usingComponents": {
+    "loading-component": "/components/loading/loading"
+  }
+}
